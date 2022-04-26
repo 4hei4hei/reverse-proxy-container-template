@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src:/web
+    tty: true
+    environment:
+      - ROLE=web
+    networks:
+      - dev
+  nginx:
+    container_name: nginx
+    image: nginx:1.21.6
+    ports:
+      - 5000:5000
+    volumes:
+      - ./config/:/etc/nginx/conf.d/
+      - ./assets/:/var/www
+    environment:
+      - ROOT=/var/www/
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
