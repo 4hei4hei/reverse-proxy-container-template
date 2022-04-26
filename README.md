@@ -5,8 +5,10 @@ NginxとWebサーバを立てる
 ## Description
 - config
 Nginxの設定ファイルを格納
-- asset
+
+- assets
 Nginxのindexページ用ファイルを格納
+
 - src
 Webサーバのソースコードを格納
 
